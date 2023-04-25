@@ -1,0 +1,21 @@
+fetch("https://thejsway-server.herokuapp.com/api/articles")
+  .then(response => response.json()) // Translate JSON into JavaScript
+  .then(articles => {
+    articles.forEach(article => {
+      // Create title element
+      const titleElement = document.createElement("h3");
+      titleElement.textContent = article.title;
+      // Create content element
+      const contentElement = document.createElement("p");
+      contentElement.textContent = article.content;
+      // Add title and content to the page
+      const articlesElement = document.getElementById("articles");
+      articlesElement.appendChild(titleElement);
+      articlesElement.appendChild(contentElement);
+    });
+  })
+  .catch(err => {
+    console.error(err.message);
+  });
+
+  // https://dog-facts-api.herokuapp.com/api/v1/resources/dogs?number=1
